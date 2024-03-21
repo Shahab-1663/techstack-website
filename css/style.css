@@ -1,0 +1,260 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+}
+.home_header{
+    background-color: rgb(255, 255, 255);
+}
+.intoimg{
+    border: 1px solid rgb(255, 255, 255);
+    margin: -50px -30px 0px -30px;
+}
+.intoimg img{
+    height: 500px;
+    width: 1278px;
+}
+header {
+    border-bottom: 2px solid black;
+    padding: 10px 30px;
+    background-color: rgb(250, 250, 129);
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 13px;
+}
+
+.row h1 {
+    font-weight: 500;
+    transition: 0.1s;
+}
+
+.row h1:hover{
+    transform: scale(1.05);
+}
+
+.row a {
+    margin: 0px 8px;
+    color: #333
+}
+
+.icon{
+    font-size: 20px;
+    transition: 0.1s;
+}
+
+.icon:hover{
+    transform: translateY(-4px);
+}
+
+.nav-menu{
+    display: flex;
+    align-items: center;
+}
+
+section {
+    padding: 50px 30px;
+    background-color: rgb(255, 255, 255);
+    
+}
+.all{
+    display: flex;
+}
+
+.main-heading {
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.card {
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    width: 260px;
+    overflow: hidden;
+    padding: 10px;
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.05);
+    transition: 0.2s;
+}
+.card:hover{
+    transform:scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    margin-top: -30px;
+
+}
+
+.card h2 {
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.card p {
+    font-size: 14px;
+}
+
+.card div {
+    margin: 15px 0;
+    color: #333;
+}
+
+
+
+/* section div {
+
+    border: 1px solid black;
+    padding: 10px;
+    margin: 50px 0;
+    background-color: #dbdbdb;
+    border-radius: 8px;
+    border-color: #dfdfdf;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.1);
+
+} */
+
+#cgpa-section {
+    display: flex;
+    height: 510px;
+}
+
+.col-left {
+    width: 30%;
+    background: url('../img/back1.jpg');
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.col-left h2 {
+    font-size: 53px;
+}
+
+.col-right {
+    width: 70%;
+    padding: 20px 40px;
+    margin: 0px 5px;
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+    /* box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1); */
+}
+
+.form-intro h2 {
+    font-weight: 500;
+}
+
+.form-intro p {
+    font-size: 14px;
+    color: #767676;
+}
+
+.form-intro span {
+    font-style: italic;
+}
+
+.form-area{
+    width: 70%;
+}
+
+.cgpa-form {
+    margin-top: 15px;
+
+}
+
+.cgpa-form div{
+    display: flex;
+}
+
+.cgpa-form span{
+    font-size: 13px;
+    color: #ff0606;
+    display: none;
+    visibility: hidden;
+}
+
+.cgpa-form input {
+    width: 100%;
+}
+
+.cgpa-form button {
+    padding: 10px 20px;
+    background-color: rgb(222, 38, 38);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    box-shadow: 4px 4px 17px rgba(228, 21, 21, 0.2);
+}
+
+.calc_form{
+    margin-top: 20px;
+    
+}
+
+.subject_row {
+    display: flex;
+    margin: 10px 0px;
+    gap: 20px;
+}
+
+.subject_row input {
+    width: 50%;
+
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.form-control{
+    border: 1px solid #dfdede;
+    padding: 10px;
+    border-radius: 5px;
+}
+.about_card{
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 8px;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    width: 600px;
+    box-shadow: 4px 0px 16px rgba(0,0,0, 0.2);
+}
+.my_img img{
+    width: 250px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.05);
+
+}
+.content{
+    padding : 10px;
+}
+.content h1{
+    font-weight: 600;
+}
+.content h2{
+    font-weight: 500;
+}
+.about_section{
+    display: flex;
+}
+.about_card2{
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 8px;
+    display: flex;
+    margin: 0px 10px;
+    padding: 10px;
+    width: 600px;
+    box-shadow: 4px 0px 16px rgba(0,0,0, 0.2);
+    background-color: #131313;
+    color: white;
+}   
