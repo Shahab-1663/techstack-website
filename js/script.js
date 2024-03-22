@@ -2,21 +2,34 @@ let subForm = document.getElementById('subject-form');
 let calcForm = document.getElementById('calc-form');
 console.log(subForm);
 let subBtn = document.querySelector('.subjBtn');
-subBtn.addEventListener('click', (e)=>{
+subBtn.addEventListener('click', (e) => {
     e.preventDefault();
+    let subNumField = document.querySelector('.sub_number');
     let subNum = document.querySelector('.sub_number').value;
-    if(subNum > 0 && subNum <= 30) {
-        for(i = 0; i < subNum; i++) {
+    let noSubError = document.getElementById("no_sub_error");
+    let maxSubError = document.getElementById("max_sub_error");
+    if (subNum > 0 && subNum <= 30) {
+        calcForm.innerHTML += "<h4 class='thin-heading'>Enter your Subject Grades and Credit Hours</h4>"
+        for (let i = 0; i < subNum; i++) {
             createSubBox();
         }
         subForm.style.display = 'none';
         subForm.style.visibility = 'hidden';
+        noSubError.style.display = "none";
+        maxSubError.style.display = "none";
+    } else if (subNum === "") {
+        maxSubError.style.display = "none";
+        noSubError.style.display = "block";
+        subNumField.style.border = "2px solid #DE2626FF";
     } else {
-        let noSubError = 
+        noSubError.style.display = "none";
+        maxSubError.style.display = "block";
+        subNumField.style.border = "2px solid #DE2626FF";
     }
+
 });
 
-const createSubBox = ()=>{
+const createSubBox = () => {
     const subBox = `
     <div class="subject_row">
         <input class="sub_grade form-control" type="text" name="sub_grade" placeholder="Subject Grade" >
