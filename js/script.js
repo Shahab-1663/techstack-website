@@ -1,3 +1,4 @@
+let formArea = document.querySelector(".form-area");
 let subForm = document.getElementById('subject-form');
 let calcForm = document.getElementById('calc-form');
 let subBtn = document.querySelector('.subjBtn');
@@ -7,6 +8,7 @@ let gradeArr = [];
 let crHArr = [];
 let eGradeArr = [];
 let cgpa = 0;
+let cgpaError = false;
 
 subBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -20,11 +22,19 @@ subBtn.addEventListener('click', (e) => {
             createSubBox();
         }
         calcForm.innerHTML += '<button type="submit" class="btnStyle" id="cgpaCalcBtn" style="margin-left: 0;">Calculate</button>';
-        calcForm.innerHTML += '<button type="submit" class="btnStyleOutline">Cancel</button>';
+        calcForm.innerHTML += '<button type="submit" class="btnStyleOutline" id="cgpaCalcCancel">Cancel</button>';
         const cgpaCalcBtn = document.getElementById("cgpaCalcBtn");
+        const cgpaCalcCancel = document.getElementById("cgpaCalcCancel");
         cgpaCalcBtn.addEventListener("click", (e) => {
             e.preventDefault();
             calculateCGPA();
+        })
+        cgpaCalcCancel.addEventListener("click", (e) => {
+            e.preventDefault();
+            subForm.style.display = 'block';
+            subForm.style.visibility = 'visible';
+            subNumField.value = '';
+            calcForm.innerHTML = '';
         })
         subForm.style.display = 'none';
         subForm.style.visibility = 'hidden';
@@ -55,40 +65,59 @@ const createSubBox = () => {
 const calculateCGPA = () => {
     let subGrade = document.querySelectorAll(".sub_grade");
     let crHour = document.querySelectorAll(".cr_hour");
-    for(let i = 0; i < subGrade.length; i++) {
+    for (let i = 0; i < subGrade.length; i++) {
         let gradeToPoint = subGrade[i].value;
-        gradeToPoint = gradeToPoint.toUpperCase();
-        let subPoints;
-        if (gradeToPoint === "A")
-            subPoints = 4.0;
-        else if (gradeToPoint === "B+")
-            subPoints = 3.5;
-        else if (gradeToPoint === "B")
-            subPoints = 3.0;
-        else if (gradeToPoint === "C+")
-            subPoints = 2.5;
-        else if (gradeToPoint === "C")
-            subPoints = 2.0;
-        else if (gradeToPoint === "D+")
-            subPoints = 1.5;
-        else if (gradeToPoint === "D")
-            subPoints = 1.0;
-        else if (gradeToPoint === "F")
-            subPoints = 0.0;
-        else {
-            console.log("Invalid value entered");
+        let crHourValue = crHour[i].value;
+        if (gradeToPoint !== "" && crHourValue !== "") {
+            gradeToPoint = gradeToPoint.toUpperCase();
+            let subPoints;
+            if (gradeToPoint === "A")
+                subPoints = 4.0;
+            else if (gradeToPoint === "B+")
+                subPoints = 3.5;
+            else if (gradeToPoint === "B")
+                subPoints = 3.0;
+            else if (gradeToPoint === "C+")
+                subPoints = 2.5;
+            else if (gradeToPoint === "C")
+                subPoints = 2.0;
+            else if (gradeToPoint === "D+")
+                subPoints = 1.5;
+            else if (gradeToPoint === "D")
+                subPoints = 1.0;
+            else if (gradeToPoint === "F")
+                subPoints = 0.0;
+            else {
+                console.log("Invalid value entered");
+            }
+            gradeArr.push(subPoints);
+            crHArr.push(Number(crHour[i].value));
+            eGradeArr.push(subPoints * crHour[i].value);
+            cgpaError = false;
+        } else {
+            cgpaError = true;
+            console.log("you have some missing information");
+            return;
         }
-        gradeArr.push(subPoints);
-        crHArr.push(Number(crHour[i].value));
-        eGradeArr.push(subPoints * crHour[i].value);
     }
 
-    for(let i = 0; i < eGradeArr.length; i++) {
+    for (let i = 0; i < eGradeArr.length; i++) {
         totalEGradePoints += eGradeArr[i];
         totalCrHours += crHArr[i];
     }
     cgpa = totalEGradePoints / totalCrHours;
-    console.log(cgpa);
+    displayCgpa(cgpa);
+}
+
+const displayCgpa = (cgpaVal) => {
+    calcForm.style.display = "none";
+    calcForm.style.visibility = "hidden";
+    formArea.innerHTML += `
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <i class="fa-duotone fa-badge-check" style="font-size: 220px;"></i>
+            <p style="margin-top: 15px; font-size: 28px">You scored <span style="font-weight: bold;">${cgpaVal}</span> CGPA</p>
+        </div>
+    `;
 }
 
 
