@@ -140,10 +140,8 @@ section {
 .col-right {
     width: 70%;
     padding: 20px 40px;
-    margin: 0px 5px;
-    border: 1px solid rgb(255, 255, 255);
+    margin: 0 5px;
     background-color: rgb(255, 255, 255);
-    /* box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1); */
 }
 
 .form-intro h2 {
@@ -160,7 +158,12 @@ section {
 }
 
 .form-area{
-    width: 70%;
+    width: 73%;
+    height: 89%;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    overflow-y: auto;
+    margin-top: 1rem;
 }
 
 .cgpa-form {
@@ -173,24 +176,35 @@ section {
 }
 
 .cgpa-form span{
+    margin-top: 5px;
     font-size: 13px;
     color: #ff0606;
     display: none;
-    visibility: hidden;
 }
 
 .cgpa-form input {
     width: 100%;
+    border: 2px solid #f1f1f1;
+    transition: 0.2s;
 }
 
-.cgpa-form button {
+.btnStyle {
     padding: 10px 20px;
-    background-color: rgb(222, 38, 38);
+    background-color: #DE2626FF;
     color: white;
-    border: none;
+    border: 2px solid #DE2626FF;
     border-radius: 5px;
     margin-left: 10px;
     box-shadow: 4px 4px 17px rgba(228, 21, 21, 0.2);
+}
+
+.btnStyleOutline{
+    padding: 10px 20px;
+    color: #DE2626FF;
+    background-color: transparent;
+    border: 2px solid #DE2626FF;
+    border-radius: 5px;
+    margin-left: 10px;
 }
 
 .calc_form{
@@ -198,9 +212,13 @@ section {
     
 }
 
+.thin-heading{
+    font-weight: 500;
+}
+
 .subject_row {
     display: flex;
-    margin: 10px 0px;
+    margin: 10px 0;
     gap: 20px;
 }
 
