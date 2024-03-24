@@ -1,4 +1,4 @@
-let formArea = document.querySelector(".form-area");
+// let formArea = document.querySelector(".form-area");
 let subForm = document.getElementById('subject-form');
 let calcForm = document.getElementById('calc-form');
 let subBtn = document.querySelector('.subjBtn');
@@ -21,6 +21,8 @@ subBtn.addEventListener('click', (e) => {
         for (let i = 0; i < subNum; i++) {
             createSubBox();
         }
+        calcForm.innerHTML += '<p class="subjFieldError" style="font-size: 13px; color: #ff0606; display: none; margin-bottom: 5px;">Please fill out all given fields</p>';
+        calcForm.innerHTML += '<p class="subjGradeError" style="font-size: 13px; color: #ff0606; display: none; margin-bottom: 5px;">Invalid Grade(s) entered!</p>';
         calcForm.innerHTML += '<button type="submit" class="btnStyle" id="cgpaCalcBtn" style="margin-left: 0;">Calculate</button>';
         calcForm.innerHTML += '<button type="submit" class="btnStyleOutline" id="cgpaCalcCancel">Cancel</button>';
         const cgpaCalcBtn = document.getElementById("cgpaCalcBtn");
@@ -88,7 +90,12 @@ const calculateCGPA = () => {
             else if (gradeToPoint === "F")
                 subPoints = 0.0;
             else {
-                console.log("Invalid value entered");
+                cgpaError = true;
+                document.querySelector(".subjGradeError").style.display = "block";
+                setTimeout(()=>{
+                    document.querySelector(".subjGradeError").style.display = "none";
+                }, 3000);
+                return;
             }
             gradeArr.push(subPoints);
             crHArr.push(Number(crHour[i].value));
@@ -96,7 +103,10 @@ const calculateCGPA = () => {
             cgpaError = false;
         } else {
             cgpaError = true;
-            console.log("you have some missing information");
+            document.querySelector(".subjFieldError").style.display = "block";
+            setTimeout(()=>{
+                document.querySelector(".subjFieldError").style.display = "none";
+            }, 3000);
             return;
         }
     }
@@ -110,14 +120,28 @@ const calculateCGPA = () => {
 }
 
 const displayCgpa = (cgpaVal) => {
-    calcForm.style.display = "none";
-    calcForm.style.visibility = "hidden";
-    formArea.innerHTML += `
-        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-            <i class="fa-duotone fa-badge-check" style="font-size: 220px;"></i>
+    // calcForm.style.display = "none";
+    // calcForm.style.visibility = "hidden";
+    calcForm.innerHTML = '';
+    calcForm.innerHTML += `
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-evenly;">
+            <i class="fa-duotone fa-badge-check" style="font-size: 190px;"></i>
             <p style="margin-top: 15px; font-size: 28px">You scored <span style="font-weight: bold;">${cgpaVal}</span> CGPA</p>
+            <button class="btnStyle reCalcBtn">Calculate Again!</button>
         </div>
     `;
+    document.querySelector(".reCalcBtn").addEventListener("click", ()=>{
+        calcForm.innerHTML = '';
+        subForm.style.visibility = 'visible';
+        subForm.style.display = 'block';
+        document.querySelector('.sub_number').value = '';
+        totalEGradePoints = 0;
+        totalCrHours = 0;
+        gradeArr = [];
+        crHArr = [];
+        eGradeArr = [];
+        cgpa = 0;
+        cgpaError = false;
+    });
 }
-
 
