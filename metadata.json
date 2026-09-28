@@ -1,0 +1,8 @@
+{
+  "name": "TechStack",
+  "description": "TechStack by Shahab Saeed: 20+ privacy-first web utilities, university CGPA calculators (4.0 scale), JSON formatters, JWT decoders, QR makers, and developer tools.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
